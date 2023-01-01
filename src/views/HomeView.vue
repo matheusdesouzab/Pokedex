@@ -9,7 +9,7 @@
 
           <div class="card-body bg-pokebola bg-normal">
             <div class="pokemon">
-              <img src="@/assets/imgs/pokemons/001.png">
+              <img src="@/assets/imgs/pokemons/001.png" v-show="exibir">
             </div>
           </div>
 
@@ -54,7 +54,7 @@
           <div class="pokedex-catalogo">
 
             <!-- início listagem dinâmica -->
-            <div class="cartao-pokemon bg-grama">
+            <div class="cartao-pokemon bg-grama" @click="exibir =! exibir">
               <h1>1 Bulbasaur</h1>
               <span>grama</span>
               <div class="cartao-pokemon-img">
@@ -74,7 +74,10 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'HomeView',
+  data: () => ({
+    exibir: false
+  })
 }
 </script>
 
@@ -176,6 +179,7 @@ body {
 .pokemon {
   display: block;
   text-align: center;
+  height: 215px;
 }
 
 .detalhes {
