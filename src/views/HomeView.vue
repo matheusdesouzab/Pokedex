@@ -104,11 +104,23 @@ body {
 }
 
 .v-enter-active{
-  transition: opacity 2s;
+  transition: opacity 1.5s;
 }
 
 .v-enter-to{
   opacity: 1;
+}
+
+.v-leave-from{
+  opacity: 1;
+}
+
+.v-leave-active{
+  transition: opacity 1.5s;
+}
+
+.v-leave-to{
+  opacity: 0;
 }
 
 .pokedex-catalogo {
