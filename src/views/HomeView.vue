@@ -10,8 +10,16 @@
           <div class="card-body bg-pokebola bg-normal">
             <div class="pokemon">
               <transition>
-                <img src="@/assets/imgs/pokemons/001.png" v-show="exibir">
+                <img src="@/assets/imgs/pokemons/001.png" v-if="exibir">
               </transition>
+              <div class="evolucoes">
+                <transition>
+                  <img src="@/assets/imgs/pokemons/003.png" v-if="exibir">
+                </transition>
+                <transition>
+                  <img src="@/assets/imgs/pokemons/002.png" v-if="exibir">
+                </transition>
+              </div>
             </div>
           </div>
 
@@ -99,7 +107,7 @@ body {
   border-radius: 10px;
 }
 
-.v-enter-from{
+/* .v-enter-from{
   opacity: 0;
 }
 
@@ -120,6 +128,34 @@ body {
 }
 
 .v-leave-to{
+  opacity: 0;
+} */
+
+
+.v-enter-from{
+  transform: translateX(-150px);
+  opacity: 0;
+}
+
+.v-enter-active{
+  transition: all 1.5s;
+}
+
+.v-enter-to{
+  transform: translateX(0px);
+  opacity: 1;
+}
+.v-leave-from{
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+.v-leave-active{
+  transition: all 1.5s;
+}
+
+.v-leave-to{
+  transform: translateX(150px);
   opacity: 0;
 }
 
@@ -210,6 +246,20 @@ body {
 
 .detalhes {
   margin: 20px 30px 20px 30px;
+}
+
+.evolucoes{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 70px;
+}
+
+.evolucoes img{
+  cursor: pointer;
+  max-width: 100%;
+  max-height: 100%;
+  float: right;
 }
 
 </style>
