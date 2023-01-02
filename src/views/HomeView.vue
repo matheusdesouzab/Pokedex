@@ -98,6 +98,9 @@ body {
 </style>
 
 <style scoped>
+
+@import '~@/assets/css/animacoes.css';
+
 .pokedex {
   padding: 20px;
   background-color: #ffffff;
@@ -105,57 +108,6 @@ body {
   -moz-box-shadow: 2px 2px 10px rgba(200, 200, 200, 0.77);
   box-shadow: 2px 2px 10px rgba(200, 200, 200, 0.77);
   border-radius: 10px;
-}
-
-.fade-enter-from{
-  opacity: 0;
-}
-
-.fade-enter-active{
-  transition: opacity 1.5s;
-}
-
-.fade-enter-to{
-  opacity: 1;
-}
-
-.fade-leave-from{
-  opacity: 1;
-}
-
-.fade-leave-active{
-  transition: opacity 1.5s;
-}
-
-.fade-leave-to{
-  opacity: 0;
-}
-
-.slide-enter-from{
-  transform: translateX(-150px);
-  opacity: 0;
-}
-
-.slide-enter-active{
-  transition: all 1.5s;
-}
-
-.slide-enter-to{
-  transform: translateX(0px);
-  opacity: 1;
-}
-.slide-leave-from{
-  transform: translateX(0px);
-  opacity: 1;
-}
-
-.slide-leave-active{
-  transition: all 1.5s;
-}
-
-.slide-leave-to{
-  transform: translateX(150px);
-  opacity: 0;
 }
 
 .pokedex-catalogo {
