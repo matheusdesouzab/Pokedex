@@ -26,12 +26,16 @@
 
             <nav class="nav nav-pills nav-fill">
               <router-link class="nav-item nav-link text-white" :to="{ path: '/sobre' }" exact-active-class="active">Sobre</router-link>
-                <router-link class="nav-item nav-link text-white" :to="{ path: '/status' }" exact-active-class="active">Status</router-link>
-                <router-link class="nav-item nav-link text-white" :to="{ path: '/habilidades' }" exact-active-class="active">Habilidades</router-link>
+              <router-link class="nav-item nav-link text-white" :to="{ path: '/status' }" exact-active-class="active">Status</router-link>
+              <router-link class="nav-item nav-link text-white" :to="{ path: '/habilidades' }" exact-active-class="active">Habilidades</router-link>
             </nav>
 
             <div class="detalhes">
-              <router-view></router-view>
+                <router-view v-slot="{ Component }">
+                  <transition name="slide">
+                    <component :is="Component"/>
+                  </transition>
+                </router-view>
             </div>
 
           </div>
