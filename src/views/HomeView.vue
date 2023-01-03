@@ -109,14 +109,20 @@ export default {
       this.exibirEvolucoes = false
     },
     analisarPokemon(p) {
+      let mudarPokemonAnalisado = false
       if ((this.pokemon.id != p.id) && (this.exibir)) {
         setTimeout(() => {
           this.analisarPokemon(p)
         }, 1000)
+        mudarPokemonAnalisado = true
       }
       this.exibir = !this.exibir
       this.pokemon = p
       this.exibirEvolucoes = !this.exibirEvolucoes
+
+      if (!this.exibir && !mudarPokemonAnalisado) {
+        this.pokemon = {}
+      }
     }
   },
   created() {
