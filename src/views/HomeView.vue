@@ -34,8 +34,8 @@
             </nav>
 
             <div class="detalhes">
-              <router-view v-slot="{ Component }">
-                <transition name="slide">
+              <router-view v-slot="{ Component }" :pokemon="pokemon">
+                <transition>
                   <component :is="Component" />
                 </transition>
               </router-view>

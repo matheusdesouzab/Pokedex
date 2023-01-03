@@ -176,9 +176,9 @@
             "evolucoes": [14,15],
             "habilidades": ["Ataque fúria", "Esquivar"],
             "status": {
-                "forca": 30,
-                "agilidade": 40,
-                "ataque": 20,
+                "forca": 20,
+                "agilidade": 30,
+                "ataque": 10,
                 "defesa": 25
             }
         },

@@ -2,14 +2,8 @@
     <div>
         <table class="table text-white">
             <tbody>
-                <tr>
-                    <td>Ataque fúria</td>
-                    <td class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger btn-sm">x</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Esquiva</td>
+                <tr v-for="(h, indice) in pokemon.habilidades" :key="indice">
+                    <td>{{ h }}</td>
                     <td class="d-flex justify-content-end">
                         <button type="button" class="btn btn-danger btn-sm">x</button>
                     </td>
@@ -19,6 +13,15 @@
         <input type="text" class="form-control" placeholder="Adicionar habilidade">
     </div>
 </template>
+
+<script>
+export default {
+    name: 'Habilidades',
+    props: {
+        pokemon: Object
+    }
+}
+</script>
 
 <style scoped>
 .table td {
