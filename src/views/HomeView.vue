@@ -34,7 +34,7 @@
             </nav>
 
             <div class="detalhes">
-              <router-view v-slot="{ Component }" :pokemon="pokemon">
+              <router-view v-slot="{ Component }" :pokemon="pokemon" @adicionarHabilidade="adicionarHabilidade" @removerHabilidade="removerHabilidade">
                 <transition>
                   <component :is="Component" />
                 </transition>
@@ -122,6 +122,16 @@ export default {
 
       if (!this.exibir && !mudarPokemonAnalisado) {
         this.pokemon = {}
+      }
+    },
+    adicionarHabilidade(habilidade) {
+      if (this.pokemon.habilidades) {
+        this.pokemon.habilidades.push(habilidade)
+      }
+    },
+    removerHabilidade(indice){
+      if(this.pokemon.habilidades[indice]){
+        this.pokemon.habilidades.splice(indice, 1)
       }
     }
   },
