@@ -14,11 +14,8 @@
                 <img :src="require(`@/assets/imgs/pokemons/${pokemon.imagem}`)" v-if="exibir">
               </transition>
               <div class="evolucoes">
-                <transition name="zoom">
-                  <img src="@/assets/imgs/pokemons/003.png" v-if="exibirEvolucoes">
-                </transition>
-                <transition name="zoom">
-                  <img src="@/assets/imgs/pokemons/002.png" v-if="exibirEvolucoes">
+                <transition name="zoom" v-for="e in pokemon.evolucoes" :key="e">
+                  <img :src="require(`@/assets/imgs/pokemons/${e.toString().padStart(3, '0')}.png`)" v-if="exibirEvolucoes">
                 </transition>
               </div>
             </div>
@@ -118,9 +115,15 @@ export default {
     ocultarEvolucoesTransicoes() {
       this.exibirEvolucoes = false
     },
-    analisarPokemon(p){
+    analisarPokemon(p) {
+      if ((this.pokemon.id != p.id) && (this.exibir)) {
+        setTimeout(() => {
+          this.analisarPokemon(p)
+        }, 1000)
+      }
       this.exibir = !this.exibir
       this.pokemon = p
+      this.exibirEvolucoes = !this.exibirEvolucoes
     }
   }
 }
@@ -244,6 +247,5 @@ body {
   cursor: pointer;
   max-width: 100%;
   max-height: 100%;
-  float: right;
 }
 </style>
