@@ -66,3 +66,36 @@
         transform: rotateX(0deg);
     }
 }
+
+.lista-enter-from {
+    opacity: 0;
+    transform: translateX(-150px)
+}
+
+.lista-enter-active {
+    transition: all 1s;
+}
+
+.lista-enter-to {
+    opacity: 1;
+    transform: translateX(0px)
+}
+
+.lista-leave-from {
+    opacity: 1;
+    transform: translateX(0px)
+}
+
+.lista-leave-active {
+    transition: all 1s;
+    position: absolute;
+}
+
+.lista-leave-to {
+    opacity: 0;
+    transform: translateX(150px)
+}
+
+.lista-move {
+    transition: all 1s;
+}

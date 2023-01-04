@@ -4,7 +4,7 @@
         <div v-else>
             <table class="table text-white">
                 <tbody>
-                    <transition-group enter-active-class="animate__animated animate__shakeY" leave-active-class="animate__animated animate__backOutDown">
+                    <transition-group name="lista">
                         <tr v-for="(h, indice) in pokemon.habilidades" :key="h">
                             <td>{{ h }}</td>
                             <td class="d-flex justify-content-end">
