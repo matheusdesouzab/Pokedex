@@ -34,7 +34,8 @@
             </nav>
 
             <div class="detalhes">
-              <router-view v-slot="{ Component }" :pokemon="pokemon" @adicionarHabilidade="adicionarHabilidade" @removerHabilidade="removerHabilidade">
+              <router-view v-slot="{ Component }" :pokemon="pokemon" @adicionarHabilidade="adicionarHabilidade"
+                @removerHabilidade="removerHabilidade">
                 <transition>
                   <component :is="Component" />
                 </transition>
@@ -56,9 +57,9 @@
 
         <div class="row">
           <div class="col">
-            <select class="form-select">
-              <option>Id crescente</option>
-              <option>Id decrescrente</option>
+            <select class="form-select" v-model="ordenacao">
+              <option value="1">Id crescente</option>
+              <option value="2">Id decrescrente</option>
               <option>De A - Z</option>
             </select>
           </div>
@@ -100,7 +101,32 @@ export default {
     exibirEvolucoes: false,
     pokemon: {},
     pokemons: [],
+    ordenacao: 1
   }),
+  watch: {
+    ordenacao(valorNovo) {
+      if (valorNovo == 1) {
+        this.pokemons.sort((proximo, atual) => {
+          if (atual.id < proximo.id) {
+            return 1
+          } else if (atual.id > proximo.id) {
+            return -1
+          }
+          return 0
+        })
+      }
+      if (valorNovo == 2) {
+        this.pokemons.sort((proximo, atual) => {
+          if (atual.id < proximo.id) {
+            return -1
+          } else if (atual.id > proximo.id) {
+            return 1
+          }
+          return 0
+        })
+      }
+    }
+  },
   methods: {
     exibirEvolucoesTransicoes() {
       this.exibirEvolucoes = true
@@ -129,8 +155,8 @@ export default {
         this.pokemon.habilidades.push(habilidade)
       }
     },
-    removerHabilidade(indice){
-      if(this.pokemon.habilidades[indice]){
+    removerHabilidade(indice) {
+      if (this.pokemon.habilidades[indice]) {
         this.pokemon.habilidades.splice(indice, 1)
       }
     }

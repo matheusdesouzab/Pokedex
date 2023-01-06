@@ -5,7 +5,7 @@
             <table class="table text-white">
                 <tbody>
                     <transition-group name="lista">
-                        <tr v-for="(h, indice) in habilidadesOrdenadas" :key="h">
+                        <tr v-for="(h, indice) in habilidadesOrdenadas23" :key="h">
                             <td>{{ h }}</td>
                             <td class="d-flex justify-content-end">
                                 <button type="button" class="btn btn-danger btn-sm"
