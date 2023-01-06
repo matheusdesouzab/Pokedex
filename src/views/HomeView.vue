@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row mt-2">
+    <div class="row mt-5">
 
       <!-- início lado esquerdo -->
       <div class="col mb-2">
@@ -48,14 +48,14 @@
       <!-- fim lado esquerdo -->
 
       <!-- início lado direito -->
-      <div class="col mb-2 pokedex">
+      <div class="col mb-2 pokedex p-4">
         <div class="row">
           <div class="col">
-            <h1>Pokédex</h1>
+            <h2 class="fw-bold mb-4">Pokédex</h2>
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-3">
           <div class="col">
             <select class="form-select" v-model="ordenacao">
               <option value="1">Id crescente</option>
@@ -70,22 +70,8 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="pokedex-catalogo">
-            <transition-group name="ordenacao">
-              <!-- início listagem dinâmica -->
-              <div v-for="p in pokemons" :key="p.id" :class="`cartao-pokemon bg-${p.tipo}`" @click="analisarPokemon(p)">
-                <h1>{{ p.id }} {{ p.nome }}</h1>
-                <span>{{ p.tipo }}</span>
-                <div class="cartao-pokemon-img">
-                  <transition enter-active-class="animate__animated animate__fadeInDown" appear>
-                    <img :src="require(`@/assets/imgs/pokemons/${p.imagem}`)">
-                  </transition>
-                </div>
-              </div>
-            </transition-group>
-            <!-- fim listagem dinâmica -->
-          </div>
+        <div class="row row-cols-md-3" id="containerCardsPokemons">
+          <card-pokemon-component :pokemons="pokemons"></card-pokemon-component>
         </div>
 
       </div>
@@ -96,8 +82,14 @@
 </template>
 
 <script>
+
+import CardPokemonComponent from '@/components/CardPokemonComponent.vue'
+
 export default {
   name: 'HomeView',
+  components: {
+    CardPokemonComponent
+  },
   data: () => ({
     exibir: false,
     exibirEvolucoes: false,
@@ -211,13 +203,21 @@ body {
   border-radius: 10px;
 }
 
-.pokedex-catalogo {
+#containerCardsPokemons {
   overflow: auto;
-  display: flex;
-  flex-wrap: wrap;
-  height: 400px;
+  height: 700px;
   width: 98%;
   margin-top: 10px;
+}
+
+#containerCardsPokemons::-webkit-scrollbar {
+  width: 10px;
+}
+
+#containerCardsPokemons::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #e5e5e5;
 }
 
 .cartao-pokemon {
@@ -239,15 +239,7 @@ body {
   padding: 0px;
 }
 
-.cartao-pokemon span {
-  color: #fff;
-  position: absolute;
-  background: rgba(255, 255, 255, 0.3);
-  font-size: 12px;
-  margin: 10px 0px 0px 5px;
-  padding: 5px 10px 5px 10px;
-  border-radius: 25px;
-}
+
 
 .cartao-pokemon img {
   max-width: 60%;
@@ -255,25 +247,6 @@ body {
   float: right;
 }
 
-.bg-grama {
-  background-color: #2d8f78;
-}
-
-.bg-fogo {
-  background-color: #e47373
-}
-
-.bg-agua {
-  background-color: #5a9ed2
-}
-
-.bg-inseto {
-  background-color: #26d3ab
-}
-
-.bg-normal {
-  background-color: #cecece
-}
 
 .bg-pokebola {
   background-image: url("~@/assets/imgs/pokebola.png");
