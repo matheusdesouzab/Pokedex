@@ -61,6 +61,7 @@
               <option value="1">Id crescente</option>
               <option value="2">Id decrescente</option>
               <option value="3">De A - Z</option>
+              <option value="4">De Z - A</option>
             </select>
           </div>
 
@@ -134,6 +135,11 @@ export default {
             return -1
           }
           return 0
+        })
+      }
+      if(valorNovo == 4){
+        this.pokemons.sort((proximo, atual) => {
+          return atual.nome.localeCompare(proximo.nome, 'pt-BR')
         })
       }
     }
