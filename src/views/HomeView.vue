@@ -72,21 +72,22 @@
 
         <div class="row">
           <div class="pokedex-catalogo">
-
-            <!-- início listagem dinâmica -->
-            <div v-for="p in pokemons" :key="p.id" :class="`cartao-pokemon bg-${p.tipo}`" @click="analisarPokemon(p)">
-              <h1>{{ p.id }} {{ p.nome }}</h1>
-              <span>{{ p.tipo }}</span>
-              <div class="cartao-pokemon-img">
-                <transition enter-active-class="animate__animated animate__fadeInDown" appear>
-                  <img :src="require(`@/assets/imgs/pokemons/${p.imagem}`)">
-                </transition>
+            <transition-group name="ordenacao">
+              <!-- início listagem dinâmica -->
+              <div v-for="p in pokemons" :key="p.id" :class="`cartao-pokemon bg-${p.tipo}`" @click="analisarPokemon(p)">
+                <h1>{{ p.id }} {{ p.nome }}</h1>
+                <span>{{ p.tipo }}</span>
+                <div class="cartao-pokemon-img">
+                  <transition enter-active-class="animate__animated animate__fadeInDown" appear>
+                    <img :src="require(`@/assets/imgs/pokemons/${p.imagem}`)">
+                  </transition>
+                </div>
               </div>
-            </div>
+            </transition-group>
             <!-- fim listagem dinâmica -->
-
           </div>
         </div>
+
       </div>
       <!-- fim lado direito -->
 
@@ -137,7 +138,7 @@ export default {
           return 0
         })
       }
-      if(valorNovo == 4){
+      if (valorNovo == 4) {
         this.pokemons.sort((proximo, atual) => {
           return atual.nome.localeCompare(proximo.nome, 'pt-BR')
         })

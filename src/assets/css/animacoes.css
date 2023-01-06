@@ -99,3 +99,7 @@
 .lista-move {
     transition: all 1s;
 }
+
+.ordenacao-move{
+    transition: all 2s;
+}
