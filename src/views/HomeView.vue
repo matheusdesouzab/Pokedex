@@ -66,7 +66,7 @@
           </div>
 
           <div class="col">
-            <input type="text" class="form-control" placeholder="Pesquisar pokémon">
+            <input type="text" class="form-control" placeholder="Pesquisar pokémon" v-model="nomePokemon">
           </div>
         </div>
 
@@ -103,9 +103,15 @@ export default {
     exibirEvolucoes: false,
     pokemon: {},
     pokemons: [],
-    ordenacao: 1
+    ordenacao: 1,
+    nomePokemon: ''
   }),
   watch: {
+    nomePokemon(valorNovo) {
+      fetch(`http://localhost:3000/pokemons?nome_like=${valorNovo}`)
+        .then(response => response.json())
+        .then(data => this.pokemons = data)
+    },
     ordenacao(valorNovo) {
       if (valorNovo == 1) {
         this.pokemons.sort((proximo, atual) => {
