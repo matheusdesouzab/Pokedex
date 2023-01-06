@@ -59,8 +59,8 @@
           <div class="col">
             <select class="form-select" v-model="ordenacao">
               <option value="1">Id crescente</option>
-              <option value="2">Id decrescrente</option>
-              <option>De A - Z</option>
+              <option value="2">Id decrescente</option>
+              <option value="3">De A - Z</option>
             </select>
           </div>
 
@@ -121,6 +121,17 @@ export default {
             return -1
           } else if (atual.id > proximo.id) {
             return 1
+          }
+          return 0
+        })
+      }
+      if (valorNovo == 3) {
+        this.pokemons.sort((proximo, atual) => {
+          if (atual.nome < proximo.nome) {
+            return 1
+          }
+          if (atual.nome > proximo.nome) {
+            return -1
           }
           return 0
         })
